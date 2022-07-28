@@ -1,0 +1,155 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	overflow: hidden;
+  background: rgb(38, 175, 91);
+  color: #333;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#toggler {
+  display: none;
+}
+
+.box {
+  width: 80px;
+  height: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box:hover {
+  cursor: pointer;
+}
+
+.line {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, .3);
+  background-color: white;
+  align-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dot {
+  border: 1px solid black;
+}
+#toggler:checked + label .line1{
+  animation: top-line-open .8s ease 1 both;
+}
+#toggler:checked + label .line3 {
+  animation: bottom-line-open .8s ease 1 both;
+}
+
+#toggler:checked + label .line2 {
+  animation: middle-line-open .5s ease 1 both;
+}
+#toggler:not(:checked) + label .line2.animation {
+  animation: middle-line-close .8s ease 1 both;
+}
+
+#toggler:not(:checked) + label .line3.animation {
+  animation: bottom-line-close .8s ease 1 both;
+}
+
+#toggler:not(:checked) + label .line1.animation{
+  animation: top-line-close .8s ease 1 both;
+}
+
+
+
+
+@keyframes top-line-open {
+  0% {
+
+  }
+  50% {
+    transform: translate(0, 20px);
+  }
+  100% {
+    transform: translate(0, 20px) rotate(45deg);
+  }
+}
+
+@keyframes top-line-close {
+  0% {
+    transform: translate(0, 20px) rotate(45deg);
+  }
+  50% {
+    transform: rotate(0deg) translate(0, 20px);
+    
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes middle-line-open {
+  0% {
+
+  }
+  100% {
+    background-color: transparent;
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes middle-line-close {
+  0% {
+    background-color: transparent;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    background-color: white;
+    
+  }
+}
+@keyframes bottom-line-open {
+  0% {
+
+  }
+  50% {
+    transform: translate(0, -20px);
+  }
+  100% {
+    transform: translate(0, -20px) rotate(135deg);
+  }
+}
+
+@keyframes bottom-line-close {
+  0% {
+    transform: translate(0, -20px) rotate(135deg);
+  }
+  50% {
+    transform: rotate(0deg) translate(0, -20px);
+    
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
